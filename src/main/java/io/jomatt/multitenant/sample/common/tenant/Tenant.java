@@ -2,10 +2,7 @@ package io.jomatt.multitenant.sample.common.tenant;
 
 import io.jomatt.multitenant.sample.common.config.CurrentTenantResolver;
 import io.quantics.multitenant.tenantdetails.TenantSchemaDetails;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,6 +14,7 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString
 @Entity
+@Setter
 @Table(name = "tenant", schema = CurrentTenantResolver.DEFAULT_SCHEMA)
 public class Tenant implements TenantSchemaDetails {
 
@@ -35,6 +33,12 @@ public class Tenant implements TenantSchemaDetails {
     @NotNull
     @Column(name = "issuer", nullable = false, unique = true)
     private String issuer;
+
+    public Tenant(TenantDto tenantDto) {
+       this.setIssuer(tenantDto.getName());
+       this.setName(tenantDto.getName());
+       this.setSchema(tenantDto.getName());
+    }
 
     @Override
     public String getJwkSetUrl() {
