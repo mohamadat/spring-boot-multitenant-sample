@@ -39,7 +39,6 @@ public class Tenant implements TenantSchemaDetails {
        this.setName(tenantDto.getName());
        this.setSchema(tenantDto.getName());
         this.setId(tenantDto.getName());
-
     }
 
     @Override

@@ -37,7 +37,6 @@ public class TenantController {
             entityManager.createNativeQuery("CREATE SCHEMA " + tenantDto.getName()).executeUpdate();
             entityManager.getTransaction().commit();
             entityManager.close();
-
         return ResponseEntity.status(HttpStatus.CREATED).body(t);
     }
 }
