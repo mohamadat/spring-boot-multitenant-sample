@@ -30,13 +30,14 @@ public class TenantController {
 
     @PostMapping
     public ResponseEntity<Tenant> createTenant(@RequestBody TenantDto tenantDto) {
-//        tenantRepository.save(new Tenant(tenantDto));
+            Tenant t = new Tenant(tenantDto);
+            tenantRepository.save(t);
             EntityManager entityManager = entityManagerFactory.createEntityManager();
             entityManager.getTransaction().begin();
             entityManager.createNativeQuery("CREATE SCHEMA " + tenantDto.getName()).executeUpdate();
             entityManager.getTransaction().commit();
             entityManager.close();
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(new Tenant(tenantDto));
+        return ResponseEntity.status(HttpStatus.CREATED).body(t);
     }
 }

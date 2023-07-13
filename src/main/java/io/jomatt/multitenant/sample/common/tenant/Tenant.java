@@ -38,6 +38,8 @@ public class Tenant implements TenantSchemaDetails {
        this.setIssuer(tenantDto.getName());
        this.setName(tenantDto.getName());
        this.setSchema(tenantDto.getName());
+        this.setId(tenantDto.getName());
+
     }
 
     @Override
