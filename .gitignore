@@ -12,6 +12,7 @@ target/
 .settings
 .springBeans
 .sts4-cache
+/keycloak-db-data
 
 ### IntelliJ IDEA ###
 .idea
